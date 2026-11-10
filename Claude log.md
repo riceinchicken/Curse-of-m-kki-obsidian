@@ -38,7 +38,7 @@ Every game script, who made it, and what other scripts can rely on.
 
 | Script | Owner | Purpose | Public API others may use | Updated |
 | --- | --- | --- | --- | --- |
-| `Assets/Scripts/Player/SmokingEffect.cs` | Otto | Test feature, visual only: press G to smoke — smoke puff, green screen haze, FOV sway. Attach to the player camera. No gameplay effect, builds its own canvas/particles at runtime. | `Smoke()` starts the effect; `IsHigh` is true while it plays | 2026-11-10 |
+| `Assets/Scripts/Player/SmokingEffect.cs` | Otto | Test feature, visual only: press G to take a hit — placeholder joint (primitives) is raised to the mouth, ember glows, joint lowers, smoke puff, then green screen haze and FOV sway. Attach to the player camera. No gameplay effect, builds its own joint/canvas/particles at runtime; animation is code-driven, no .anim assets. | `Smoke()` takes a hit; `IsTakingHit` is true during the hand animation; `IsHigh` is true from the hit until the effect fades | 2026-11-10 |
 
 ## In progress
 
@@ -68,6 +68,7 @@ Things one Claude needs from the other person's scripts.
 
 Newest first. One line per session: date, who, what was done.
 
+- 2026-11-10 — Otto's Claude — `SmokingEffect.cs`: added a placeholder joint held in view and a code-driven hit animation (raise, inhale, lower, exhale). Still on branch `otto/smoking-effect`, uncommitted, not tested in Unity by Claude.
 - 2026-11-10 — Otto's Claude — Added `SmokingEffect.cs` (visual-only test feature) on game repo branch `otto/smoking-effect`. Not compiled or tested in Unity yet, not committed, not on `main`.
 - 2026-11-10 — Otto's Claude — Created this log. Game repo state: fresh Unity project, one commit by Vili ("Korjaus liike"), only `Assets/Scenes/SampleScene.unity` and Unity's TutorialInfo scripts. No game scripts yet.
 ok 
