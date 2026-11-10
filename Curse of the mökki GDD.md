@@ -4,7 +4,7 @@
 
 **Game repo:** https://github.com/VHlearning3/Curse-of-Mokki
 
-> Imported from the [Google Doc](https://docs.google.com/document/d/1CPt07hfyMdiQCxjAZefjJKTiYywah9qw3gqGsOCxWa8/edit) on 2026-11-10. Images are stored in the vault's `Images` folder.
+> Imported from the [Google Doc](https://docs.google.com/document/d/1CPt07hfyMdiQCxjAZefjJKTiYywah9qw3gqGsOCxWa8/edit) on 2026-11-10, last synced with it on 2026-11-10 (second pass). Images are stored in the vault's `Images` folder.
 
 ## Overview
 
@@ -69,7 +69,7 @@ first person horror stealth, eldritch
 | Version control | Git | [GitHub](https://github.com/VHlearning3/Curse-of-Mokki) |
 | Graphics | Blender | |
 | Textures | Krita | |
-| Task Management | HacknPlan | Hack'n'Plan |
+| Task Management | HacknPlan | [Hack'n'Plan](https://app.hacknplan.com/) |
 | Platform | PC | |
 
 ## Gameplay Details
@@ -78,14 +78,14 @@ first person horror stealth, eldritch
 
 | Verb | Controls | Description | Muokattavat arvot |
 | --- | --- | --- | --- |
-| Move | WASD | Walking | |
-| Interact | E | interact with world / Start dialogue | |
-| Sneaking | Ctrl/C | move almost silently to avoid enemies. Doesn't help if fully insane | |
-| Run | Shift | Move faster | |
-| Use pills | ?Q | recover 30-50 sanity over 5-10 seconds (overdose?) | |
-| Stone throw | Mouse Left | distract enemies by throwing a stone (pick up stone by interacting with one) | |
-| Madness | | Health like mechanic, where you die if you get hit while madness is 80% or higher | |
-| Passive sanity recovery | | recover sanity passively | |
+| Move | WASD | Walking | walk speed |
+| Interact | E | interact with world / Start dialogue | Interaction range |
+| Sneaking | Ctrl/C | move almost silently to avoid enemies. Doesn't help if fully insane | Detection range |
+| Run | Shift | Move faster | Run speed |
+| Use pills | ?Q | recover 30-50 sanity over 5-10 seconds (overdose?) | Sanity gain value |
+| Stone throw | Mouse Left | distract enemies by throwing a stone (pick up stone by interacting with one) | Throw distance/Sound range |
+| Madness | | Health like mechanic, where you die if you get hit while madness is 80% or higher | depletion rate |
+| Passive sanity recovery | | recover sanity passively | Gain rate |
 
 ### Secondary Mechanics
 
@@ -94,7 +94,7 @@ first person horror stealth, eldritch
 | Enemy | Description | Muokattavat arvot |
 | --- | --- | --- |
 | Cultist | Scary enemies that patrol and attack when they see the player. They disappear if hit doesn't kill the player. Can be found in 3rd "Cave" sector of the game | Different behaviour, patrolling |
-| Wolf | Chasing enemy will show up at the end of 2nd sector "Forest" and force the player forward. If player moves too slow they get killed | |
+| Wolf | Chasing enemy will show up at the end of 2nd sector "Forest" and force the player forward. If player moves too slow they get killed | Chase speed |
 
 #### Save points
 
@@ -142,7 +142,7 @@ Low FOV view
 
 ![[GDD forest level design.png]]
 
-### Cave
+### Cave: alustava simppeli layout
 
 ## Graphics
 
@@ -223,11 +223,14 @@ Simple low poly models
 
 https://fawkek.itch.io/psx-retro-tools
 
-Dithered textures using this free tool
+Dithered textures using this tool or posterizing with krita
 
 ![[GDD dithering tool settings.png]]
 
-Theme colors:
+**Theme colors:**
+
+- Forest color palette
+- Cave color palette
 
 #### List of VFX
 
@@ -266,7 +269,7 @@ List of animations
 
 #### Zoth Ommog
 
-ui pintaan
+ui pintaan mökin vieressä olevasta järvestä
 
 ![[GDD Zoth Ommog.png]]
 
@@ -276,13 +279,21 @@ List of animations
 
 | Name | Description |
 | --- | --- |
-| Enemy_Idle | |
-| Enemy_Walk | |
-| Enemy_Run | |
-| Enemy_Attack | |
-| Enemy_PlayerKill | |
-| Wolf_Run | |
-| Wolf_PlayerKill | |
+| Enemy_Idle | Pieni huojuva liike |
+| Enemy_Walk | Kävely |
+| Enemy_Run | Juoksu |
+| Enemy_Attack | Lyö turpiin |
+| Enemy_PlayerKill | Jos pelaaja jää kiinni kaapissa kaapin ovet aukeavat ja vihu tappaa sut |
+| Wolf_Run | Juoksu |
+| Wolf_PlayerKill | Susi saa pelaajan kiinni ja puraisee naamasta |
+| Cabinet_Open | Kaapin avaus animaatio ja samalla sulkeminen |
+
+#### Muut animaatiot
+
+| Name | Description |
+| --- | --- |
+| Cabinet_Open | Kaapin avaus animaatio ja samalla sulkeminen |
+| Door_Open | Oven avaus animaatio ja samalla sulkeminen |
 
 ### Environment
 
@@ -332,6 +343,7 @@ Luola:
 - kivisilta/riippusilta
 - vesi
 - hirviöpatsas
+- Cultist monster
 
 **Mökki**
 - Mökki
@@ -353,7 +365,6 @@ Luola:
 - lyhty
 - pillerit
 - notes
-- Cultist
 - Kaveri
 
 #### Lighting
@@ -373,6 +384,8 @@ Fonts from Google Fonts:
 ## Audio
 
 ### Overview
+
+Realistic sounds collected around the net. Walk, sneak and run are one step that can be varied. Music comes from outside.
 
 ### Sound Effects and Music
 
@@ -404,23 +417,23 @@ Fonts from Google Fonts:
 | SFX_HidingPlaceClimb | player climbs in hiding place | 2 |
 | SFX_DeepBreathing | player deep breathing while hiding | 2 |
 | SFX_AMBCultChant | cult chant when closing in the gods chamber | 2 |
-| SFX_StoneThrow | when thrown stone hits (echo) | 1 |
+| SFX_StoneThrown | when thrown stone hits (echo) | 1 |
 | SFX_Pills | player eats pills to recover sanity | 1 |
 | SFX_LootingCorpse | rifling through corpses pockets | 1 |
 | SFX_TwigCrack | twig cracking in forest | 2 |
-| SFX_Death | player death | 1 |
+| SFX_Death | player death "Gääh!" | 1 |
 | SFX_Enemy | gurgling and other odd mouth sounds cave enemy makes (echo) | 1 |
 | SFX_EnemyAttack | cave enemy attacking (echo) | 1 |
 | SFX_SplashLarge | sounds of something large moving in the waters behind the gods statue | 2 |
 | SFX_UIClick | UI clicking sound | 2 |
-| SFX_MUSMainMenu ? | music for main menu | 3 |
-| SFX_MUSMadness ? | music for madness (may not be necessary) | 4 |
-| SFX_MUSChase ? | music for chase | 3 |
-| SFX_MUSEnding ? | music for ending | 3 |
-| SFX_VACottage (nth) | voice acting for intro, between player and his friend | 3 |
-| SFX_VAForest (nth) | voice acting for player reactions in forest | 3 |
-| SFX_VACave (nth) | voice acting for player reactions in cave (possibly conversations with dead bodies) | 3 |
-| SFX_VAEnding (nth) | voice acting for ending, between player and his friend | 3 |
+| SFX_MUSMainMenu | music for main menu | 3 |
+| SFX_MUSMadness | ? music for madness (may not be necessary) | 4 |
+| SFX_MUSChase | music for chase | 3 |
+| SFX_MUSEnding | music for ending | 3 |
+| SFX_VACottage | (nth) voice acting for intro, between player and his friend | 3 |
+| SFX_VAForest | (nth) voice acting for player reactions in forest | 3 |
+| SFX_VACave | (nth) voice acting for player reactions in cave (possibly conversations with dead bodies) | 3 |
+| SFX_VAEnding | (nth) voice acting for ending, between player and his friend | 3 |
 
 ### List of sound effects
 
@@ -440,7 +453,7 @@ Fonts from Google Fonts:
 **Audio Format:**
 - audio/ogg (audio/vorbis) @ 128+ kbp/s (using Vorbis 1.3 codec)
 
-Unity seems to be quite unclear about what Vorbis features it actually supports - Unity AudioClip Documentation
+Unity seems to be quite unclear about what Vorbis features it actually supports - [Unity AudioClip Documentation](https://docs.unity3d.com/2022.3/Documentation/Manual/class-AudioClip.html)
 
 ## Changelog
 
