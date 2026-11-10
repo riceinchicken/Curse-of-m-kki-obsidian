@@ -1,0 +1,12 @@
+# Per-device Obsidian layout and state (causes constant conflicts if shared)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache
+
+# Obsidian's trash folder
+.trash/
+
+# OS clutter
+.DS_Store
+Thumbs.db
+desktop.ini
