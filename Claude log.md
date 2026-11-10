@@ -67,3 +67,4 @@ Things one Claude needs from the other person's scripts.
 Newest first. One line per session: date, who, what was done.
 
 - 2026-11-10 — Otto's Claude — Created this log. Game repo state: fresh Unity project, one commit by Vili ("Korjaus liike"), only `Assets/Scenes/SampleScene.unity` and Unity's TutorialInfo scripts. No game scripts yet.
+ok 
