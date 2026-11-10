@@ -17,20 +17,21 @@ Related: [[Curse of the mökki GDD]] · [[Otto]] · [[Vili]]
 
 From the work plans. "Owner" means that person's Claude writes and edits those scripts.
 
-| Area | Owner |
-| --- | --- |
-| Player movement (walk, sneak, sprint, hide) | Otto |
-| Audio manager | Otto |
-| First person camera | Otto |
-| Cutscenes | Otto |
-| Interaction mechanic | Otto |
-| Stone throwing | Otto |
-| Madness system / player HP | Vili |
-| Inventory system / player HUD | Vili |
-| Enemies (wolf, cultist) | Vili |
-| NPC friend | Vili |
-| Dialogue | Vili |
-| Menus (main, pause, settings, death/end) | Vili |
+| Area                                        | Owner |
+| ------------------------------------------- | ----- |
+| Player movement (walk, sneak, sprint, hide) | Otto  |
+| Audio manager                               | Otto  |
+| First person camera                         | Otto  |
+| Cutscenes                                   | Otto  |
+| Interaction mechanic                        | Otto  |
+| Stone throwing                              | Otto  |
+| Madness system / player HP                  | Vili  |
+| Inventory system / player HUD               | Vili  |
+| Enemies (wolf, cultist)                     | Vili  |
+| NPC friend                                  | Vili  |
+| Dialogue                                    | Vili  |
+| Menus (main, pause, settings, death/end)    | Vili  |
+| Save Point System                           | Vili  |
 
 ## Script registry
 
