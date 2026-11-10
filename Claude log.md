@@ -38,7 +38,7 @@ Every game script, who made it, and what other scripts can rely on.
 
 | Script | Owner | Purpose | Public API others may use | Updated |
 | --- | --- | --- | --- | --- |
-| *(none yet)* | | | | |
+| `Assets/Scripts/Player/SmokingEffect.cs` | Otto | Test feature, visual only: press G to smoke — smoke puff, green screen haze, FOV sway. Attach to the player camera. No gameplay effect, builds its own canvas/particles at runtime. | `Smoke()` starts the effect; `IsHigh` is true while it plays | 2026-11-10 |
 
 ## In progress
 
@@ -52,7 +52,9 @@ Decisions both sides must follow. Add here when one is made.
 
 - Unity 6000.3.24f1, URP.
 - Asset naming follows the GDD (`TypeAbbreviation_BaseName_AdditionalInfo`).
-- *(script folder layout, namespaces, input system: not decided yet)*
+- Input: the project uses the new Input System only (`activeInputHandler: 1`). Use `UnityEngine.InputSystem`, not `Input.GetKey`.
+- Script folders (proposed by Otto's Claude, change if you disagree): `Assets/Scripts/<Area>/`, e.g. `Assets/Scripts/Player/`.
+- *(namespaces: not decided yet)*
 
 ## Requests for the other side
 
@@ -66,5 +68,6 @@ Things one Claude needs from the other person's scripts.
 
 Newest first. One line per session: date, who, what was done.
 
+- 2026-11-10 — Otto's Claude — Added `SmokingEffect.cs` (visual-only test feature) on game repo branch `otto/smoking-effect`. Not compiled or tested in Unity yet, not committed, not on `main`.
 - 2026-11-10 — Otto's Claude — Created this log. Game repo state: fresh Unity project, one commit by Vili ("Korjaus liike"), only `Assets/Scenes/SampleScene.unity` and Unity's TutorialInfo scripts. No game scripts yet.
 ok 
