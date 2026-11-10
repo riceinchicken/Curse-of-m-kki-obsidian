@@ -2,6 +2,8 @@
 
 **Curse of The Mökki/Mountain/Cave** — Game Design Document, 2026
 
+**Game repo:** https://github.com/VHlearning3/Curse-of-Mokki
+
 > Imported from the [Google Doc](https://docs.google.com/document/d/1CPt07hfyMdiQCxjAZefjJKTiYywah9qw3gqGsOCxWa8/edit) on 2026-11-10. Images are stored in the vault's `Images` folder.
 
 ## Overview
@@ -64,7 +66,7 @@ first person horror stealth, eldritch
 | Purpose | Tool | Details |
 | --- | --- | --- |
 | Game Engine | Unity | 6000.3.24f1 |
-| Version control | Git | GitHub |
+| Version control | Git | [GitHub](https://github.com/VHlearning3/Curse-of-Mokki) |
 | Graphics | Blender | |
 | Textures | Krita | |
 | Task Management | HacknPlan | Hack'n'Plan |
