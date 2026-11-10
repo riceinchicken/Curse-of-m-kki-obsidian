@@ -68,6 +68,7 @@ Things one Claude needs from the other person's scripts.
 
 Newest first. One line per session: date, who, what was done.
 
+- 2026-11-10 — Otto's Claude — Merged `otto/smoking-effect` into game repo `main` and pushed, together with Vili's commit "isohko kuutio testi" (scene change, CLAUDE.md update). `SmokingEffect.cs` is now on `main`.
 - 2026-11-10 — Otto's Claude — `SmokingEffect.cs` tested by Otto in Unity (works), committed and pushed to game repo branch `otto/smoking-effect`. Not merged to `main` yet. The component is not saved on any camera in `SampleScene`; add it to the player camera to use it.
 - 2026-11-10 — Otto's Claude — `SmokingEffect.cs`: added a placeholder joint held in view and a code-driven hit animation (raise, inhale, lower, exhale). Still on branch `otto/smoking-effect`, uncommitted, not tested in Unity by Claude.
 - 2026-11-10 — Otto's Claude — Added `SmokingEffect.cs` (visual-only test feature) on game repo branch `otto/smoking-effect`. Not compiled or tested in Unity yet, not committed, not on `main`.
