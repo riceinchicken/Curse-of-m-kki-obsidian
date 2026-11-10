@@ -2,7 +2,7 @@
 
 **Curse of The Mökki/Mountain/Cave** — Game Design Document, 2026
 
-> Imported from the [Google Doc](https://docs.google.com/document/d/1CPt07hfyMdiQCxjAZefjJKTiYywah9qw3gqGsOCxWa8/edit) on 2026-11-10. Images (level design sketches, theme colors, reference pictures) were not imported — see the original doc for those.
+> Imported from the [Google Doc](https://docs.google.com/document/d/1CPt07hfyMdiQCxjAZefjJKTiYywah9qw3gqGsOCxWa8/edit) on 2026-11-10. Images are stored in the vault's `Images` folder.
 
 ## Overview
 
@@ -138,6 +138,8 @@ Low FOV view
 
 ### Forest: Alustava simppeli level design
 
+![[GDD forest level design.png]]
+
 ### Cave
 
 ## Graphics
@@ -169,10 +171,14 @@ Materiaalit URP/Lit → smoothness 0, specular highlight ja environment reflecti
         - Primary Bone Axis: set to the axis the root bone's local Y axis points to
         - Secondary Bone Axis: set to the axis the root bone's local X axis points to
 
+![[GDD Blender FBX export settings.png]]
+
 **In Unity:**
 
 - In the Model Importer Inspector window: Bake Axis Conversion: checked
 - Remove unnecessary imports (for example Materials)
+
+![[GDD Unity bake axis conversion.png]]
 
 More info: https://polynook.com/learn/lesson/how-to-export-models-from-blender-to-unity
 
@@ -207,11 +213,17 @@ Sanity shader?
 
 Simple low poly models
 
+![[GDD modeling reference low poly.png|400]]
+
+![[GDD modeling reference textured.png|400]]
+
 #### Texturing
 
 https://fawkek.itch.io/psx-retro-tools
 
 Dithered textures using this free tool
+
+![[GDD dithering tool settings.png]]
 
 Theme colors:
 
@@ -254,6 +266,8 @@ List of animations
 
 ui pintaan
 
+![[GDD Zoth Ommog.png]]
+
 #### Cultist and wolf
 
 List of animations
@@ -274,7 +288,11 @@ List of animations
 
 Mökki
 
+![[GDD setting mökki.png]]
+
 Metsä:
+
+![[GDD setting metsä.png]]
 
 Luola:
 
