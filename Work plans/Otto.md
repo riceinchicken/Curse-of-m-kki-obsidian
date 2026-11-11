@@ -28,12 +28,12 @@
 
 ## VKO 3
 
-| Date | Task |
-| --- | --- |
-| 01.12 | 1. Cutscenes (Mökki) |
+| Date  | Task                                                                             |
+| ----- | -------------------------------------------------------------------------------- |
+| 01.12 | 1. Cutscenes (Mökki)                                                             |
 | 02.12 | 2. Cutscenes (Sanity in forest) / 3. Cutscene transition between forest and cave |
-| 03.12 | 4. Cutscenes (Closet) |
-| 04.12 | 5. Cutscenes (Ending) |
+| 03.12 | 4. Cutscenes (Closet)                                                            |
+| 04.12 | 5. Cutscenes (Ending)                                                            |
 
 ## VKO 4
 
