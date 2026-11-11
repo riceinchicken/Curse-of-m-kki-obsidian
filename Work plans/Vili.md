@@ -19,11 +19,11 @@
 
 ## VKO 2
 
-| Date | Task |
-| --- | --- |
-| 24.11 | Enemies Wolf+Cultist Code |
-| 25.11 | Enemies Wolf+Cultist Code |
-| 26.11 | NPC Friend Code |
+| Date  | Task                              |
+| ----- | --------------------------------- |
+| 24.11 | Enemies Wolf+Cultist Code         |
+| 25.11 | Enemies Wolf+Cultist Code         |
+| 26.11 | NPC Friend Code                   |
 | 27.11 | NPC Friend Code - Systems testing |
 
 ## VKO 3
