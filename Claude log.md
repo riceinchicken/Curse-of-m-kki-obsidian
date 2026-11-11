@@ -69,6 +69,7 @@ Things one Claude needs from the other person's scripts.
 
 Newest first. One line per session: date, who, what was done.
 
+- 2026-11-11 — Vili's Claude — Connected to this vault and the game repo on Vili's PC. No scripts made yet. On 2026-11-10: fixed `CLAUDE.md` in the game repo (both PCs use the user folder `Pelifarmi`, so the developer is now identified with `git config user.name`; added Vili's vault path), and synced [[Curse of the mökki GDD]] with the Google Doc (tunable values, animation lists, audio overview, SFX names). Four GDD images are still missing from `Images` (cave layout, texturing reference, forest and cave color palettes) and show as empty links until added.
 - 2026-11-10 — Otto's Claude — Merged `otto/smoking-effect` into game repo `main` and pushed, together with Vili's commit "isohko kuutio testi" (scene change, CLAUDE.md update). `SmokingEffect.cs` is now on `main`.
 - 2026-11-10 — Otto's Claude — `SmokingEffect.cs` tested by Otto in Unity (works), committed and pushed to game repo branch `otto/smoking-effect`. Not merged to `main` yet. The component is not saved on any camera in `SampleScene`; add it to the player camera to use it.
 - 2026-11-10 — Otto's Claude — `SmokingEffect.cs`: added a placeholder joint held in view and a code-driven hit animation (raise, inhale, lower, exhale). Still on branch `otto/smoking-effect`, uncommitted, not tested in Unity by Claude.
