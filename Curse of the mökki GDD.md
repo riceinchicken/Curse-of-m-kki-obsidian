@@ -4,7 +4,7 @@
 
 **Game repo:** https://github.com/VHlearning3/Curse-of-Mokki
 
-> Imported from the [Google Doc](https://docs.google.com/document/d/1CPt07hfyMdiQCxjAZefjJKTiYywah9qw3gqGsOCxWa8/edit) on 2026-11-10, last synced with it on 2026-11-10 (second pass). Images are stored in the vault's `Images` folder.
+> Imported from the [Google Doc](https://docs.google.com/document/d/1CPt07hfyMdiQCxjAZefjJKTiYywah9qw3gqGsOCxWa8/edit) on 2026-11-10, last synced with it on 2026-11-11. Images are stored in the vault's `Images` folder.
 
 ## Overview
 
@@ -37,12 +37,14 @@
 
 ### Player Motivation
 
+Solve the mystery behind missing friend
+
 ### Design Goals
 
 - **Exploration and puzzles with a forced path.** LINEAR game with clear areas of gameplay and exploration. Puzzles will be simple door key combos and more lurking and sneaking past enemies.
 - **Visuals first.** Design strives for better visuals than anything and is meant more for the visual experience, detailed textures and surfaces.
 - **Map design.** Claustrophobic rooms full of grime, water, wooden structures and dim
-- **Jännitys ja pelko.** Vuorella tapahtuu yliluonnollisia asioita jotka luovat pelkoa äänen ja grafiikan avulla
+- **Jännitys ja pelko.** Pelissä tapahtuu yliluonnollisia asioita jotka luovat pelkoa äänen ja grafiikan avulla
 
 ### Setting & Narrative
 
@@ -60,6 +62,8 @@
 first person horror stealth, eldritch
 
 ### Target Audience
+
+Horror game fans
 
 ### Development Software
 
@@ -144,6 +148,8 @@ Low FOV view
 
 ### Cave: alustava simppeli layout
 
+![[GDD cave layout.png]]
+
 ## Graphics
 
 ### Overview
@@ -227,10 +233,17 @@ Dithered textures using this tool or posterizing with krita
 
 ![[GDD dithering tool settings.png]]
 
+![[GDD texturing reference.png]]
+
 **Theme colors:**
 
-- Forest color palette
-- Cave color palette
+Forest color palette
+
+![[GDD forest color palette.png]]
+
+Cave color palette
+
+![[GDD cave color palette.png]]
 
 #### List of VFX
 
@@ -252,20 +265,20 @@ List of animations
 
 | Name | Description |
 | --- | --- |
-| Player_LanternSway | Lyhdyn heiluminen kädessä liikkuessa |
-| Player_Throw | Pelaaja heittää kiven |
-| Player_Pills | Pelaaja syö pillereitä |
+| ANIM_Player_LanternSway | Lyhdyn heiluminen kädessä liikkuessa |
+| ANIM_Player_Throw | Pelaaja heittää kiven |
+| ANIM_Player_Pills | Pelaaja syö pillereitä |
 
 #### Kaveri
 
-Juttelee pelaajalle pelin alussa. Kidnapataan mökistä. Löytyy kuolleena pelin lopussa
+Juttelee pelaajalle pelin alussa. Kidnapataan mökistä. Löytyy alttarilla kuolleena pelin lopussa
 
 List of animations
 
 | Name | Description |
 | --- | --- |
-| Friend_Idle | |
-| Friend_Walk | |
+| ANIM_Friend_Idle | |
+| ANIM_Friend_Walk | |
 
 #### Zoth Ommog
 
@@ -279,21 +292,21 @@ List of animations
 
 | Name | Description |
 | --- | --- |
-| Enemy_Idle | Pieni huojuva liike |
-| Enemy_Walk | Kävely |
-| Enemy_Run | Juoksu |
-| Enemy_Attack | Lyö turpiin |
-| Enemy_PlayerKill | Jos pelaaja jää kiinni kaapissa kaapin ovet aukeavat ja vihu tappaa sut |
-| Wolf_Run | Juoksu |
-| Wolf_PlayerKill | Susi saa pelaajan kiinni ja puraisee naamasta |
-| Cabinet_Open | Kaapin avaus animaatio ja samalla sulkeminen |
+| ANIM_Enemy_Idle | Pieni huojuva liike |
+| ANIM_Enemy_Walk | Kävely |
+| ANIM_Enemy_Run | Juoksu |
+| ANIM_Enemy_Attack | Lyö turpiin |
+| ANIM_Enemy_PlayerKill | Jos pelaaja jää kiinni kaapissa kaapin ovet aukeavat ja vihu tappaa sut |
+| ANIM_Wolf_Run | Juoksu |
+| ANIM_Wolf_PlayerKill | Susi saa pelaajan kiinni ja puraisee naamasta |
 
 #### Muut animaatiot
 
 | Name | Description |
 | --- | --- |
-| Cabinet_Open | Kaapin avaus animaatio ja samalla sulkeminen |
-| Door_Open | Oven avaus animaatio ja samalla sulkeminen |
+| ANIM_Cabinet_Open | Kaapin avaus animaatio ja samalla sulkeminen |
+| ANIM_Door_Open | Oven avaus animaatio ja samalla sulkeminen |
+| ANIM_Chest_Open | Arkun avaus animaatio ja samalla sulkeminen |
 
 ### Environment
 
@@ -385,7 +398,7 @@ Fonts from Google Fonts:
 
 ### Overview
 
-Realistic sounds collected around the net. Walk, sneak and run are one step that can be varied. Music comes from outside.
+Realistic sounds collected around the net. Walk, sneak and run are one step that can be varied. Sound effects may have optional numbered alt versions. Music comes from outside. Music is intended to be mostly ambient with minimal instrumentation. Inspiration from Call of Cthulhu game's ambience track.
 
 ### Sound Effects and Music
 
@@ -395,11 +408,11 @@ Realistic sounds collected around the net. Walk, sneak and run are one step that
 | SFX_WalkSnow | player/human walk in snow | 1 |
 | SFX_RunSnow | player/human run in snow | 1 |
 | SFX_SneakSnow | player sneaking in snow | 2 |
-| SFX_WalkCave | player/human walk in cave (echo) | 1 |
-| SFX_RunCave | player/human run in cave (echo) | 1 |
+| SFX_WalkCave | player/human walk in cave (with echo) | 1 |
+| SFX_RunCave | player/human run in cave (with echo) | 1 |
 | SFX_SneakCave | player sneaking in cave | 1 |
-| SFX_WalkEnemy | enemy walk in cave (echo) | 1 |
-| SFX_RunEnemy | enemy chase sound (echo) | 1 |
+| SFX_WalkEnemy | enemy walk in cave (with echo) | 1 |
+| SFX_RunEnemy | enemy chase sound (with echo) | 1 |
 | SFX_WalkEnemyAlt | enemy walk in cave, but moist | 2 |
 | SFX_AMBCottage | ambience of old cottage, with some wind whistling | 2 |
 | SFX_AMBForest | forest ambience with snowstorm and high wind | 1 |
@@ -417,13 +430,13 @@ Realistic sounds collected around the net. Walk, sneak and run are one step that
 | SFX_HidingPlaceClimb | player climbs in hiding place | 2 |
 | SFX_DeepBreathing | player deep breathing while hiding | 2 |
 | SFX_AMBCultChant | cult chant when closing in the gods chamber | 2 |
-| SFX_StoneThrown | when thrown stone hits (echo) | 1 |
+| SFX_StoneThrown | when thrown stone hits (with echo) | 1 |
 | SFX_Pills | player eats pills to recover sanity | 1 |
 | SFX_LootingCorpse | rifling through corpses pockets | 1 |
 | SFX_TwigCrack | twig cracking in forest | 2 |
 | SFX_Death | player death "Gääh!" | 1 |
-| SFX_Enemy | gurgling and other odd mouth sounds cave enemy makes (echo) | 1 |
-| SFX_EnemyAttack | cave enemy attacking (echo) | 1 |
+| SFX_Enemy | gurgling and other odd mouth sounds cave enemy makes (with echo) | 1 |
+| SFX_EnemyAttack | cave enemy attacking (with echo) | 1 |
 | SFX_SplashLarge | sounds of something large moving in the waters behind the gods statue | 2 |
 | SFX_UIClick | UI clicking sound | 2 |
 | SFX_MUSMainMenu | music for main menu | 3 |
@@ -460,3 +473,21 @@ Unity seems to be quite unclear about what Vorbis features it actually supports 
 Any notable changes, what was there originally, and why it was changed.
 
 ## REFERENCES
+
+https://www.canva.com/design/DAHZS2ApeeM/EzrsP2vvKsOEGv5AOohqKg/edit
+
+## Cutscenes script
+
+1. **Game start / cutscene mökissä.** Camera panning forest then cottage for 10 seconds then transitions to player eye view and cutscene ends and play starts inside cottage.
+
+2. **Friend disappears scene.** Player clicks bed to sleep, cutscene starts. Fade in and out black, player wakes up from bed, looks around and finds that friend isn't there and spots bloody marks / drag marks going out from open cottage door. Camera follows marks outside and into forest, fade black and player spawns in forest start and cutscene ends.
+
+    - **2.5 Minor sanity lost moments in the forest.** 2 scenes near different points of interest (camp, statue/pillar). How it works: steal camera focus and play effect, not a real cutscene.
+
+3. **Cutscene transition between forest and cave** (smooth moving between different zones). Wolves chase player to cave entrance and cutscene starts, player walks into tight cave entrance and squeezes inside, wolves don't fit so they stay out and bark at player as player camera glances back at them, camera turns to look inside cave and cutscene ends, player spawns in cave.
+
+4. **Cutscene if cultist finds player in a closet or other hiding place** (slow cultist attack animation and player death). Cultist picks up player from hiding place and holds them up while staring at them inflicting madness; if player dies cultist does normal attack animation and player gets thrown to ground.
+
+5. **Game final ending cutscene.**
+    - **1/2:** Player opens final room door. Player remains in control while walking across stone bridge. During the bridge player gets slowed and madness effects start slowly until they're in full effect when close to the altar. When near altar cutscene starts, player collapses with madness effects and screen goes black, player spawns in cottage bed, stands up and sees friend alive, friend says something to the player and points out of the window.
+    - **2/2:** Player camera dragged to the window and looks over the lake, large monster fish skims the surface of the lake, madness effect(?), game end.
