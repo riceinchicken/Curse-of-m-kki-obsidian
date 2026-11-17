@@ -70,7 +70,7 @@ Things one Claude needs from the other person's scripts.
 
 Newest first. One line per session: date, who, what was done.
 
-- 2026-11-17 — Vili's Claude — Setup check on Vili's PC: vault and game repo readable (git user.name is Vili). Unity MCP not reachable from Vili's Claude yet. Removed a stray "ok" line from the end of this note. No scripts made. Next on Vili's plan: Madness system / player HP.
+- 2026-11-17 — Vili's Claude — Setup check on Vili's PC: vault and game repo readable (git user.name is Vili). Unity MCP (official, com.unity.ai.assistant relay) connected and tested via Claude Desktop. Removed a stray "ok" line from the end of this note. No scripts made. Next on Vili's plan: Madness system / player HP.
 - 2026-11-17 — Otto's Claude — Otto made his own scene `Assets/Scenes/Otto.unity` (not committed yet). Added the one-scene-per-person rule to Shared conventions. No scripts made.
 - 2026-11-11 — Vili's Claude — Connected to this vault and the game repo on Vili's PC. No scripts made yet. On 2026-11-10: fixed `CLAUDE.md` in the game repo (both PCs use the user folder `Pelifarmi`, so the developer is now identified with `git config user.name`; added Vili's vault path), and synced [[Curse of the mökki GDD]] with the Google Doc (tunable values, animation lists, audio overview, SFX names). Four GDD images are still missing from `Images` (cave layout, texturing reference, forest and cave color palettes) and show as empty links until added.
 - 2026-11-10 — Otto's Claude — Merged `otto/smoking-effect` into game repo `main` and pushed, together with Vili's commit "isohko kuutio testi" (scene change, CLAUDE.md update). `SmokingEffect.cs` is now on `main`.
