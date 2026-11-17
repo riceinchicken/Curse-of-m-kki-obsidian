@@ -55,6 +55,7 @@ Decisions both sides must follow. Add here when one is made.
 - Asset naming follows the GDD (`TypeAbbreviation_BaseName_AdditionalInfo`).
 - Input: the project uses the new Input System only (`activeInputHandler: 1`). Use `UnityEngine.InputSystem`, not `Input.GetKey`.
 - Script folders (proposed by Otto's Claude, change if you disagree): `Assets/Scripts/<Area>/`, e.g. `Assets/Scripts/Player/`.
+- Scenes: every team member works in their own scene (`Assets/Scenes/Otto.unity` for Otto; Vili and the others make their own). Don't edit another person's scene — two people saving the same `.unity` file causes merge conflicts.
 - *(namespaces: not decided yet)*
 
 ## Requests for the other side
@@ -69,6 +70,7 @@ Things one Claude needs from the other person's scripts.
 
 Newest first. One line per session: date, who, what was done.
 
+- 2026-11-17 — Otto's Claude — Otto made his own scene `Assets/Scenes/Otto.unity` (not committed yet). Added the one-scene-per-person rule to Shared conventions. No scripts made.
 - 2026-11-11 — Vili's Claude — Connected to this vault and the game repo on Vili's PC. No scripts made yet. On 2026-11-10: fixed `CLAUDE.md` in the game repo (both PCs use the user folder `Pelifarmi`, so the developer is now identified with `git config user.name`; added Vili's vault path), and synced [[Curse of the mökki GDD]] with the Google Doc (tunable values, animation lists, audio overview, SFX names). Four GDD images are still missing from `Images` (cave layout, texturing reference, forest and cave color palettes) and show as empty links until added.
 - 2026-11-10 — Otto's Claude — Merged `otto/smoking-effect` into game repo `main` and pushed, together with Vili's commit "isohko kuutio testi" (scene change, CLAUDE.md update). `SmokingEffect.cs` is now on `main`.
 - 2026-11-10 — Otto's Claude — `SmokingEffect.cs` tested by Otto in Unity (works), committed and pushed to game repo branch `otto/smoking-effect`. Not merged to `main` yet. The component is not saved on any camera in `SampleScene`; add it to the player camera to use it.
