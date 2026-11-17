@@ -45,7 +45,7 @@ Every game script, who made it, and what other scripts can rely on.
 
 | What | Who | Started |
 | --- | --- | --- |
-| *(nothing)* | | |
+| `Assets/Scripts/Player/PlayerMovement.cs` (walk; sneak, sprint, hide follow this week) and `Assets/Scripts/Audio/AudioManager.cs` | Otto | 2026-11-17 |
 
 ## Shared conventions
 
