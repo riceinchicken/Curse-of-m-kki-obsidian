@@ -42,6 +42,7 @@ Every game script, who made it, and what other scripts can rely on.
 | `Assets/Scripts/Player/SmokingEffect.cs` | Otto | Test feature, visual only: press G to take a hit — placeholder joint (primitives) is raised to the mouth, ember glows, joint lowers, smoke puff, then green screen haze and FOV sway. Attach to the player camera. No gameplay effect, builds its own joint/canvas/particles at runtime; animation is code-driven, no .anim assets. | `Smoke()` takes a hit; `IsTakingHit` is true during the hand animation; `IsHigh` is true from the hit until the effect fades | 2026-11-10 |
 | `Assets/Scripts/Madness/PlayerMadness.cs` | Vili | Madness = player HP (0 sane … 100 insane, Sanity = 100 − Madness). Hit at ≥ death threshold (80 %) kills, otherwise adds madness. Drain sources add madness at the depletion rate (never kills, stops at 100). Passive sanity recovery starts after a delay since madness last went up. All values editable in the Inspector. Put on the player. | `TakeHit()` / `TakeHit(amount)` (returns true if killed), `AddMadness`, `ReduceMadness`, `RecoverOverTime(amount, seconds)` (pills), `BeginDrain(source, multiplier)` / `EndDrain(source)` (enemy aura, hiding place), `SetMadness`, `ResetMadness`; read `Madness`, `Madness01`, `Sanity`, `IsInDangerZone`, `IsFullyInsane`, `IsDead`, `IsDraining`; events `OnMadnessChanged(float 0..1)`, `OnDangerZoneChanged(bool)`, `OnDied` | 2026-11-17 |
 | `Assets/Scripts/Madness/MadnessDebug.cs` | Vili | TEST ONLY: on-screen madness bar + test keys H = hit, J = drain on/off, K = reset. Needs `PlayerMadness` on the same object. Remove from the real player. | none | 2026-11-17 |
+| `Assets/Scripts/Madness/MadnessVignette.cs` | Vili | Madness camera effect, visual only (no audio). Creates its own global URP Volume at runtime: red edges (Vignette) from 50 % madness, stronger in the danger zone and building up over time while a drain is active (enemy aura, hiding place), fading when no drain and as sanity recovers; optional whole-image red tint and visual pulse. All values and on/off toggles in the Inspector. Reads `PlayerMadness`, doesn't touch the camera script. Camera needs Post Processing enabled. | none (reads `PlayerMadness`) | 2026-11-17 |
 
 ## In progress
 
@@ -66,12 +67,13 @@ Things one Claude needs from the other person's scripts.
 
 | From | To | Request | Status |
 | --- | --- | --- | --- |
-| *(none)* | | | |
+| Vili | Otto | When the first person player camera exists: enable **Post Processing** on it (Camera > Rendering > Post Processing), so `MadnessVignette` (red madness edges) shows. No code change needed in Otto's scripts. | open |
 
 ## Session log
 
 Newest first. One line per session: date, who, what was done.
 
+- 2026-11-17 — Vili's Claude — Made `MadnessVignette.cs` (red madness edges + optional tint and pulse, visual only). Compiles; 14 logic checks pass. Added it to `Player_MadnessTest` and enabled Post Processing on Main Camera in `Assets/Scenes/Vili scene.unity` only. Added a request for Otto: enable Post Processing on the player camera. Not committed to the game repo yet.
 - 2026-11-17 — Vili's Claude — Made `PlayerMadness.cs` (madness = player HP + passive sanity recovery, per GDD Primary Mechanics) and `MadnessDebug.cs` (test overlay). Compiles; 14 logic checks pass in Unity (hit/death at 80 %, drain, recovery delay, pills API). Added test object `Player_MadnessTest` to `Assets/Scenes/Vili scene.unity` only. Not yet attached to a real player — when Otto's player exists, `PlayerMadness` goes on it. Otto's hide can later call `BeginDrain`/`EndDrain` (GDD: lose sanity in hiding place). Not committed to the game repo yet.
 - 2026-11-17 — Vili's Claude — Setup check on Vili's PC: vault and game repo readable (git user.name is Vili). Unity MCP (official, com.unity.ai.assistant relay) connected and tested via Claude Desktop. Removed a stray "ok" line from the end of this note. No scripts made. Next on Vili's plan: Madness system / player HP.
 - 2026-11-17 — Otto's Claude — Otto made his own scene `Assets/Scenes/Otto.unity` (not committed yet). Added the one-scene-per-person rule to Shared conventions. No scripts made.
