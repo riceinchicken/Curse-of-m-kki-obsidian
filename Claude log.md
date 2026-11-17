@@ -51,13 +51,18 @@ Every game script, who made it, and what other scripts can rely on.
 | `Assets/Scripts/Inventory/PillUser.cs` | Vili | Q takes a pill: removes one `ITEM_Pills` and calls `PlayerMadness.RecoverOverTime` (30–50 sanity over 5–10 s, editable). Optional overdose (off). Reads Q directly for now — see question to Otto. | `TryUsePill()`; events `OnPillTaken(amount, seconds)`, `OnOverdose` | 2026-11-17 |
 | `Assets/Scripts/HUD/PlayerHUD.cs` | Vili | Player HUD: item icons + counts and a short "+1 Pills" note, shown for a few seconds after any inventory change, then fades (all editable). Builds its own Screen Space Overlay canvas (TextMeshPro) at runtime. Madness has no HUD element (GDD) — see `MadnessVignette`. | `ShowNow()` | 2026-11-17 |
 | `Assets/Scripts/Inventory/InventoryDebug.cs` | Vili | TEST ONLY: keys to add items (Vili scene: 1 lantern, 2 pills, 3 key; Left Alt + key removes). Remove from the real player. | none | 2026-11-17 |
+| `Assets/Scripts/Menus/GameSettings.cs` | Vili | Static settings saved with PlayerPrefs (GDD: music + SFX volume and on/off). **Audio manager should read these.** | `MusicVolume`, `SfxVolume` (0..1), `MusicEnabled`, `SfxEnabled`, `EffectiveMusicVolume`, `EffectiveSfxVolume` (0 when off), event `OnChanged`, `Save()` | 2026-11-17 |
+| `Assets/Scripts/Menus/MainMenu.cs` | Vili | Main menu: Play, Settings, Credits, Quit game. On prefab `Menu_MainMenu`. Test mode (default): Play just closes the menu; tick *Load Scene On Play* to load `MAIN SCENE`. Pauses time while open. | `Open()`, `Close()`, `Play()`, static `IsOpen`, `Instance` | 2026-11-17 |
+| `Assets/Scripts/Menus/PauseMenu.cs` | Vili | Pause menu, key **P**: Resume, Settings, Quit to main menu. On prefab `Menu_PauseMenu` (put in every game scene). Stops time (`Time.timeScale` 0) and frees the cursor while paused, restores both on resume. | static `IsPaused`, static event `OnPauseChanged(bool)`, `Pause()`, `Resume()` | 2026-11-17 |
+| `Assets/Scripts/Menus/SettingsMenu.cs` | Vili | Settings panel (2 sliders + 2 toggles + Back) writing `GameSettings`. Prefab `Menu_Settings`, used inside both menus. | `Open()`, `Close()`, event `OnClosed` | 2026-11-17 |
+| `Assets/Scripts/Menus/CreditsMenu.cs` | Vili | Credits panel; the text is a TMP object in prefab `Menu_Credits` (placeholder names). | `Open()`, `Close()`, event `OnClosed` | 2026-11-17 |
+| `Assets/Scripts/Menus/MenuUtility.cs` | Vili | Menu helpers: creates an EventSystem if the scene has none, loads scenes (works in Editor without Build Settings), quits. | `LoadScene(name)`, `QuitGame()`, `EnsureEventSystem()` | 2026-11-17 |
 
 ## In progress
 
 | What | Who | Started |
 | --- | --- | --- |
 | `Assets/Scripts/Player/PlayerMovement.cs` (walk; sneak, sprint, hide follow this week) and `Assets/Scripts/Audio/AudioManager.cs` | Otto | 2026-11-17 |
-| Placeholder menus: main menu (Play, Settings, Credits, Quit game), pause menu (P: Resume, Settings, Quit to main menu), settings (music/SFX per GDD), credits. Scripts in `Assets/Scripts/Menus/`, prefabs in `Assets/Art/Prefabs/UI/Menus/`, tested in `Assets/Scenes/Vili scene.unity` only (not `MAIN SCENE` yet) | Vili | 2026-11-17 |
 
 ## Shared conventions
 
@@ -69,6 +74,7 @@ Decisions both sides must follow. Add here when one is made.
 - Script folders (proposed by Otto's Claude, change if you disagree): `Assets/Scripts/<Area>/`, e.g. `Assets/Scripts/Player/`.
 - Scenes: every team member works in their own scene (`Assets/Scenes/Otto.unity` for Otto; Vili and the others make their own). Don't edit another person's scene — two people saving the same `.unity` file causes merge conflicts.
 - UI text uses **TextMeshPro**. TMP Essential Resources imported by Vili's Claude on 2026-11-17 (`Assets/TextMesh Pro/`) — pull instead of importing again.
+- Menu prefabs: `Assets/Art/Prefabs/UI/Menus/` (`Menu_Button` is nested in all menus — restyle it once). The GDD naming table has no prefab prefix yet; these use `Menu_`.
 - *(namespaces: not decided yet)*
 
 ## Requests for the other side
@@ -81,11 +87,16 @@ Things one Claude needs from the other person's scripts.
 | Vili | Otto | **Question — stones:** does your stone throwing keep track of the picked-up stone(s) itself? Vili's inventory has **no stone slot for now**. If you'd rather store stones in `PlayerInventory`, say so here. | open |
 | Vili | Otto | **Question — Q key for pills:** OK to add a `UsePills` action (Q) to the shared `Assets/InputSystem_Actions.inputactions`, or should Vili's `PillUser` read the key directly with `Keyboard.current` (like `SmokingEffect` does with G)? For now `PillUser` reads Q directly; the key is changeable in the Inspector. | open |
 | Vili | Otto | **Info — interaction:** for pickups use `PlayerInventory.Add(item)`; for locked doors check `PlayerInventory.Has(keyItem)` (and `Remove` if the key is used up). API in the Script registry once done. | info |
+| Vili | Otto | **Pause (P):** while `PauseMenu.IsPaused` is true, mouse look and movement should stop. `Time.timeScale` is 0, but mouse-delta look usually ignores it — please check `PauseMenu.IsPaused` (or listen to `PauseMenu.OnPauseChanged`) in the camera/movement scripts. The pause menu frees the cursor and restores your lock state on resume. | open |
+| Vili | Otto | **Audio settings:** when the audio manager exists, read volumes from `GameSettings.EffectiveMusicVolume` / `EffectiveSfxVolume` and listen to `GameSettings.OnChanged`. | open |
+| Vili | Otto | **Question — P key:** same as the Q question: `PauseMenu` reads P directly with `Keyboard.current` for now. OK, or add a `Pause` action to `InputSystem_Actions`? | open |
+| Vili | Otto | **Build Settings / MAIN SCENE:** the menus are tested in `Vili scene` only. Before the real game build, decide together: scene order in Build Settings (main menu first) and putting `Menu_PauseMenu` into `MAIN SCENE`. Vili's Claude won't edit `MAIN SCENE` or Build Settings until then. | open |
 
 ## Session log
 
 Newest first. One line per session: date, who, what was done.
 
+- 2026-11-17 — Vili's Claude — Made placeholder menus: `GameSettings`, `MainMenu`, `PauseMenu` (P), `SettingsMenu`, `CreditsMenu`, `MenuUtility` (`Assets/Scripts/Menus/`) and prefabs `Menu_Button`, `Menu_Settings`, `Menu_Credits`, `Menu_MainMenu`, `Menu_PauseMenu` (`Assets/Art/Prefabs/UI/Menus/`). Compiles; 15 logic checks pass. Added both menus + an EventSystem to `Assets/Scenes/Vili scene.unity` only — `MAIN SCENE` and Build Settings untouched. Added requests for Otto (pause vs mouse look, audio settings, P key, build order). Not committed to the game repo yet.
 - 2026-11-17 — Vili's Claude — Vili committed and pushed today's work to game repo `main` (commit bf6f89e "Madness+MadnessVignette+Inventory prototype"): `Assets/Scripts/Madness/`, `Assets/Scripts/Inventory/`, `Assets/Scripts/HUD/`, `Assets/Data/Items/`, `Assets/TextMesh Pro/`, `Assets/Scenes/Vili scene.unity` (+ .meta). Checked: committed files match the tested versions. Small change before the commit: removed a note from the Overdose header in `PillUser.cs` (Inspector text only).
 - 2026-11-17 — Otto's Claude — Committed and pushed `PlayerMovement.cs`, `Assets/Scenes/Otto.unity` and two test materials to game repo branch `otto/audio-manager` (commit b933e9c). Not merged to `main`. `AudioManager.cs` still local only, untested.
 - 2026-11-17 — Otto's Claude — Otto wrote `Assets/Scripts/Player/PlayerMovement.cs` himself (WASD with `CharacterController`, normalized direction, gravity with grounded check; reads `Keyboard.current` directly; no public API yet). Works in `Otto.unity`. Sneak/sprint/hide not started. `Assets/Scripts/Audio/AudioManager.cs` drafted by Claude: untested, known bug (volume changes ignored after a music fade). All of this is uncommitted on local game repo branch `otto/audio-manager` — not on GitHub yet, so not in the Script registry yet.
