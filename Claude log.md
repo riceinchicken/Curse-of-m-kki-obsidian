@@ -57,6 +57,7 @@ Every game script, who made it, and what other scripts can rely on.
 | What | Who | Started |
 | --- | --- | --- |
 | `Assets/Scripts/Player/PlayerMovement.cs` (walk; sneak, sprint, hide follow this week) and `Assets/Scripts/Audio/AudioManager.cs` | Otto | 2026-11-17 |
+| Placeholder menus: main menu (Play, Settings, Credits, Quit game), pause menu (P: Resume, Settings, Quit to main menu), settings (music/SFX per GDD), credits. Scripts in `Assets/Scripts/Menus/`, prefabs in `Assets/Art/Prefabs/UI/Menus/`, tested in `Assets/Scenes/Vili scene.unity` only (not `MAIN SCENE` yet) | Vili | 2026-11-17 |
 
 ## Shared conventions
 
