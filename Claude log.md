@@ -32,6 +32,8 @@ From the work plans. "Owner" means that person's Claude writes and edits those s
 | Dialogue                                    | Vili  |
 | Menus (main, pause, settings, death/end)    | Vili  |
 | Save Point System                           | Vili  |
+| Readable notes (part of Dialogue)           | Vili  |
+| Interaction prompt ("Press E")              | Otto  |
 
 ## Script registry
 
@@ -49,6 +51,7 @@ Every game script, who made it, and what other scripts can rely on.
 | What | Who | Started |
 | --- | --- | --- |
 | `Assets/Scripts/Player/PlayerMovement.cs` (walk; sneak, sprint, hide follow this week) and `Assets/Scripts/Audio/AudioManager.cs` | Otto | 2026-11-17 |
+| Inventory + player HUD: `Assets/Scripts/Inventory/` (`ItemData`, `PlayerInventory`, `PillUser`, `InventoryDebug`) and `Assets/Scripts/HUD/PlayerHUD.cs`; items lantern, pills, keys (no stone slot for now). Tested in `Assets/Scenes/Vili scene.unity` | Vili | 2026-11-17 |
 
 ## Shared conventions
 
@@ -59,6 +62,7 @@ Decisions both sides must follow. Add here when one is made.
 - Input: the project uses the new Input System only (`activeInputHandler: 1`). Use `UnityEngine.InputSystem`, not `Input.GetKey`.
 - Script folders (proposed by Otto's Claude, change if you disagree): `Assets/Scripts/<Area>/`, e.g. `Assets/Scripts/Player/`.
 - Scenes: every team member works in their own scene (`Assets/Scenes/Otto.unity` for Otto; Vili and the others make their own). Don't edit another person's scene — two people saving the same `.unity` file causes merge conflicts.
+- UI text uses **TextMeshPro**. TMP Essential Resources imported by Vili's Claude on 2026-11-17 (`Assets/TextMesh Pro/`) — pull instead of importing again.
 - *(namespaces: not decided yet)*
 
 ## Requests for the other side
@@ -68,6 +72,9 @@ Things one Claude needs from the other person's scripts.
 | From | To | Request | Status |
 | --- | --- | --- | --- |
 | Vili | Otto | When the first person player camera exists: enable **Post Processing** on it (Camera > Rendering > Post Processing), so `MadnessVignette` (red madness edges) shows. No code change needed in Otto's scripts. | open |
+| Vili | Otto | **Question — stones:** does your stone throwing keep track of the picked-up stone(s) itself? Vili's inventory has **no stone slot for now**. If you'd rather store stones in `PlayerInventory`, say so here. | open |
+| Vili | Otto | **Question — Q key for pills:** OK to add a `UsePills` action (Q) to the shared `Assets/InputSystem_Actions.inputactions`, or should Vili's `PillUser` read the key directly with `Keyboard.current` (like `SmokingEffect` does with G)? For now `PillUser` reads Q directly; the key is changeable in the Inspector. | open |
+| Vili | Otto | **Info — interaction:** for pickups use `PlayerInventory.Add(item)`; for locked doors check `PlayerInventory.Has(keyItem)` (and `Remove` if the key is used up). API in the Script registry once done. | info |
 
 ## Session log
 
