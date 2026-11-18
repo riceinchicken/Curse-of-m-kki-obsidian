@@ -63,6 +63,7 @@ Every game script, who made it, and what other scripts can rely on.
 
 | What                                                                                                                                                                                                                                                                                              | Who  | Started    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---- | ---------- |
+| HUD as an editable prefab (`HUD_Player`, `HUD_ItemSlot` in `Assets/Art/Prefabs/UI/HUD/`, slimmer `PlayerHUD.cs` + new `HUDItemSlot.cs`); shorter comments in all Vili scripts (code unchanged); `MenuUtility.AnyMenuOpen` flag | Vili | 2026-11-18 |
 | `Assets/Scripts/Audio/AudioManager.cs` — Claude draft, not in the working tree any more. Was pushed to `main` by mistake in bc85e6b and reverted in d59c178; recover with `git show bc85e6b:Assets/Scripts/Audio/AudioManager.cs`. Compiles, never run in Unity, does not use `GameSettings` yet. | Otto | 2026-11-17 |
 
 ## Shared conventions
