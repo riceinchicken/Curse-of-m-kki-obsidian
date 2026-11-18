@@ -1,6 +1,6 @@
 # Curse of Mökki – menujen muokkausohje
 
-Päivitetty 2026-11-17 · Related: [[Claude log]] · [[Curse of the mökki GDD]]
+Päivitetty 2026-11-18 · Related: [[Claude log]] · [[Curse of the mökki GDD]]
 
 Kaikki valikot ovat prefabeja kansiossa **`Assets/Art/Prefabs/UI/Menus/`**: `Menu_Button`, `Menu_MainMenu`, `Menu_PauseMenu`, `Menu_DeathEndScreen`, `Menu_Settings` ja `Menu_Credits`. Muokkaa niitä aina prefabin kautta:
 
@@ -65,7 +65,26 @@ Credits-teksti on objektissa `Panel/Body`, ja nyt siinä on placeholderit, jotka
 - **Leveys:** Layout Element > Preferred Width (nyt 700).
 - Jos credits-teksti kasvaa pitkäksi, pyydä Claudea lisäämään vieritys.
 
-## 7. Fontit ja kuvat
+## 7. HUD: HUD_Player ja HUD_ItemSlot
+
+HUD on omassa kansiossaan **`Assets/Art/Prefabs/UI/HUD/`**, ja sitä muokataan samoin kuin menuja: avaa prefab ja tee muutokset. Pelaajan esineet näkyvät hetken jokaisen muutoksen jälkeen ja häipyvät sitten, mutta avaimet pysyvät näkyvissä koko ajan.
+
+- **Sijainti:** `HUD_Player/BottomLeft` on ankkuroitu vasempaan alakulmaan, ja etäisyys reunoista on Pos X / Pos Y (nyt 40, 40). Jos haluat HUDin toiseen kulmaan, vaihda **Anchor** ja **Pivot** samaan kulmaan.
+- **Rakenne:**
+    - `BottomLeft/Fading` häipyy: `ChangeNote` (teksti, esim. "+1 Pills") ja `ItemRow` (lyhty, pillerit).
+    - `BottomLeft/AlwaysVisibleRow` ei häivy: avaimet.
+- **Välit:** riveissä Horizontal Layout Group > **Spacing** (nyt 16), `BottomLeft`issa ja `Fading`issa 6.
+- **Esimerkkipaikat:** molemmissa riveissä on "Example slot (removed in game)", jotta asettelun näkee editorissa. Peli poistaa ne alussa, joten muuta esineen ulkoasua `HUD_ItemSlot`-prefabissa, älä niissä.
+- **Yhden esineen ulkoasu: `HUD_ItemSlot`:**
+    - `Icon` on ikonikuva. Koko asetetaan kohdasta Layout Element > Preferred Width / Height (nyt 64 × 64).
+    - `Label` näyttää määrän (esim. "x2"). Jos esineellä ei ole vielä ikonia, se näyttää myös nimen.
+    - `HUDItemSlot`-komponentissa: **Icon Color** = ikonien sävy (valkoinen = kuvan omat värit) ja **Placeholder Icon Color** = himmeä neliö esineille, joilla ei vielä ole ikonia.
+- **Esineiden ikonit ja näkyvyys** asetetaan esineassettiin, ei HUDiin: `Assets/Data/Items/ITEM_*` > **Icon**, **Show In HUD** ja **Always Show While Carried**. Ruksaa viimeinen jokaiseen avaimeen.
+- **Ajat:** `HUD_Player`in `PlayerHUD`-komponentissa **Show Seconds** (nyt 3), **Fade Seconds** (nyt 1) ja **Show Change Note**.
+- **Älä poista** objekteja `Fading`, `ChangeNote`, `ItemRow` ja `AlwaysVisibleRow`. Jos `PlayerHUD`-komponentin kentässä lukee **None**, raahaa oikea objekti takaisin.
+- **Testaus:** HUD näkyy vain, kun inventaario muuttuu. Vili scenessä testinäppäimet ovat 1 = lyhty, 2 = pilleri ja 3 = avain, ja Left Alt + numero poistaa.
+
+## 8. Fontit ja kuvat
 
 Fontti tuodaan TextMeshPron font assetiksi, ja kuvat nimetään GDD:n mukaan.
 
@@ -79,7 +98,7 @@ Fontti tuodaan TextMeshPron font assetiksi, ja kuvat nimetään GDD:n mukaan.
     - Import-asetuksissa Texture Type on **Sprite (2D and UI)**.
     - Koot ovat GDD:n mukaan kahden potensseja.
 
-## 8. Säännöt, ettei mikään hajoa
+## 9. Säännöt, ettei mikään hajoa
 
 Ulkoasun muuttaminen, uudelleennimeäminen ja siirtäminen ovat turvallisia, mutta skriptien käyttämiä objekteja ei saa poistaa.
 
@@ -96,7 +115,7 @@ Ulkoasun muuttaminen, uudelleennimeäminen ja siirtäminen ovat turvallisia, mut
 - **Koristekuvat nappien päällä:** poista niistä **Raycast Target**, muuten napit eivät reagoi klikkaukseen.
 - **Testaa Game-ikkunassa** resoluutiolla **1920 × 1080**. Valikot skaalautuvat muihin resoluutioihin siitä.
 
-## 9. Toiminta-asetukset juuriobjektien Inspectorissa
+## 10. Toiminta-asetukset juuriobjektien Inspectorissa
 
 Toiminta säädetään valikoiden juuriobjektien Inspectorista. Oletuksena kaikki toimii testitilassa yhden scenen sisällä.
 
