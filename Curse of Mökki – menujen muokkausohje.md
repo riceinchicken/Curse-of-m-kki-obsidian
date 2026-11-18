@@ -1,5 +1,4 @@
-# Curse of Mökki – menujen muokkausohje
-
+ 
 Päivitetty 2026-11-18 · Related: [[Claude log]] · [[Curse of the mökki GDD]]
 
 Kaikki valikot ovat prefabeja kansiossa **`Assets/Art/Prefabs/UI/Menus/`**: `Menu_Button`, `Menu_MainMenu`, `Menu_PauseMenu`, `Menu_DeathEndScreen`, `Menu_Settings` ja `Menu_Credits`. Muokkaa niitä aina prefabin kautta:
