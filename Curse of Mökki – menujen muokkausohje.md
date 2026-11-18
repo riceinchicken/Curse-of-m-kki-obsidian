@@ -7,6 +7,20 @@ Kaikki valikot ovat prefabeja kansiossa **`Assets/Art/Prefabs/UI/Menus/`**: `Men
 2. Tee muutokset. Ne tallentuvat automaattisesti, jos oikean yläkulman Auto Save on päällä. Muuten paina Save.
 3. Jos muokkasit vahingossa scenessä olevaa kopiota, siirrä muutokset prefabiin valitsemalla Inspectorin yläosasta **Overrides > Apply All**.
 
+### Esimerkki: pillerit saavat oman ikonin
+
+Ikoni vaihdetaan esineeseen (`ITEM_Pills`), ei HUDiin, joten sama kuva näkyy kaikkialla, missä pillerit näytetään.
+
+1. **Tee kuva:** PNG, läpinäkyvä tausta, koko kahden potenssi (esim. 128 × 128). Nimeä se GDD:n mukaan: `UI_Pills.png`.
+2. **Tuo kuva Unityyn:** raahaa tiedosto Project-ikkunaan kansioon `Assets/Art/UI/`.
+3. **Tee siitä sprite:** valitse `UI_Pills` Project-ikkunassa. Vaihda Inspectorissa **Texture Type** = **Sprite (2D and UI)** ja paina **Apply**.
+4. **Avaa esine:** valitse Project-ikkunassa `Assets/Data/Items/ITEM_Pills`, jolloin sen asetukset näkyvät Inspectorissa.
+5. **Liitä ikoni:** raahaa `UI_Pills` Project-ikkunasta `ITEM_Pills`in kenttään **Icon**.
+6. **Testaa:** avaa Vili scene, paina Play, klikkaa Game-ikkunaa ja paina **2**. Vasempaan alakulmaan tulee pilleripurkin kuva ja teksti "x1". Nimi "Pills" ei enää näy, koska esineellä on nyt ikoni.
+7. **Commitoi** GitHub Desktopissa `UI_Pills.png`, sen `.meta` ja `ITEM_Pills.asset`.
+
+Jos kuva on liian iso tai pieni, muuta kokoa `HUD_ItemSlot`-prefabissa: `Icon` > Layout Element > Preferred Width / Height. Jos kuva näyttää sumealta, vaihda kuvan import-asetuksista **Filter Mode** = **Point** ja **Compression** = **None**, ja paina **Apply**.
+
 ## 1. Napit kaikki kerralla: Menu_Button
 
 Jokainen nappi kaikissa valikoissa on tämän prefabin kopio, joten muutos tässä päivittyy kaikkiin nappeihin.
@@ -83,19 +97,7 @@ HUD on omassa kansiossaan **`Assets/Art/Prefabs/UI/HUD/`**, ja sitä muokataan s
 - **Älä poista** objekteja `Fading`, `ChangeNote`, `ItemRow` ja `AlwaysVisibleRow`. Jos `PlayerHUD`-komponentin kentässä lukee **None**, raahaa oikea objekti takaisin.
 - **Testaus:** HUD näkyy vain, kun inventaario muuttuu. Vili scenessä testinäppäimet ovat 1 = lyhty, 2 = pilleri ja 3 = avain, ja Left Alt + numero poistaa.
 
-### Esimerkki: pillerit saavat oman ikonin
 
-Ikoni vaihdetaan esineeseen (`ITEM_Pills`), ei HUDiin, joten sama kuva näkyy kaikkialla, missä pillerit näytetään.
-
-1. **Tee kuva:** PNG, läpinäkyvä tausta, koko kahden potenssi (esim. 128 × 128). Nimeä se GDD:n mukaan: `UI_Pills.png`.
-2. **Tuo kuva Unityyn:** raahaa tiedosto Project-ikkunaan kansioon `Assets/Art/UI/`.
-3. **Tee siitä sprite:** valitse `UI_Pills` Project-ikkunassa. Vaihda Inspectorissa **Texture Type** = **Sprite (2D and UI)** ja paina **Apply**.
-4. **Avaa esine:** valitse Project-ikkunassa `Assets/Data/Items/ITEM_Pills`, jolloin sen asetukset näkyvät Inspectorissa.
-5. **Liitä ikoni:** raahaa `UI_Pills` Project-ikkunasta `ITEM_Pills`in kenttään **Icon**.
-6. **Testaa:** avaa Vili scene, paina Play, klikkaa Game-ikkunaa ja paina **2**. Vasempaan alakulmaan tulee pilleripurkin kuva ja teksti "x1". Nimi "Pills" ei enää näy, koska esineellä on nyt ikoni.
-7. **Commitoi** GitHub Desktopissa `UI_Pills.png`, sen `.meta` ja `ITEM_Pills.asset`.
-
-Jos kuva on liian iso tai pieni, muuta kokoa `HUD_ItemSlot`-prefabissa: `Icon` > Layout Element > Preferred Width / Height. Jos kuva näyttää sumealta, vaihda kuvan import-asetuksista **Filter Mode** = **Point** ja **Compression** = **None**, ja paina **Apply**.
 
 ## 8. Fontit ja kuvat
 
