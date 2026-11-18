@@ -32,6 +32,16 @@ Jokainen nappi kaikissa valikoissa on tämän prefabin kopio, joten muutos täss
 - **Teksti:** valitse lapsiobjekti `Label` ja muuta siitä fontti, koko ja väri.
 - **Yksittäisen napin teksti** (esim. "Play" → "Pelaa"): avaa valikon prefab, esim. `Menu_MainMenu`, valitse `Content/MainPanel/Buttons/PlayButton/Label` ja muuta teksti.
 
+### Esimerkki: kaikki napit saavat oman kuvan ja punaisen hover-värin
+
+1. Tee nappikuva `UI_Button.png` (esim. 512 × 128): koristeelliset reunat ja tasainen keskiosa.
+2. Raahaa kuva kansioon `Assets/Art/UI/`, valitse se ja vaihda Inspectorissa **Texture Type** = **Sprite (2D and UI)**. Paina **Apply**.
+3. Paina samassa Inspectorissa **Sprite Editor** ja vedä vihreät reunaviivat koristereunojen sisäpuolelle, jolloin keskiosa venyy mutta reunat eivät. Paina **Apply**.
+4. Kaksoisklikkaa `Menu_Button`-prefabia ja valitse juuriobjekti `Menu_Button`.
+5. Valitse Image-komponentissa **Source Image** = `UI_Button` ja **Image Type** = **Sliced**.
+6. Valitse Button-komponentissa **Normal Color** = valkoinen (kuva omissa väreissään) ja **Highlighted Color** = punertava (väri, kun hiiri on napin päällä).
+7. Tallenna ja testaa: Vili scene, Play ja vie hiiri napin päälle. Kaikkien valikoiden napit ovat muuttuneet.
+
 ## 2. Päävalikko: Menu_MainMenu
 
 Päävalikossa ovat napit Play, Settings, Credits ja Quit game.
@@ -43,6 +53,14 @@ Päävalikossa ovat napit Play, Settings, Credits ja Quit game.
 - **Valikko vasempaan reunaan:** `MainPanel` > **Child Alignment** = Middle Left, ja lisää **Padding Left**.
 - **Nappien järjestys:** raahaa napit Hierarchyssä `Buttons`-objektin alla haluamaasi järjestykseen.
 
+### Esimerkki: päävalikkoon taustakuva
+
+1. Tee kuva `UI_MainMenuBackground.png` (esim. 2048 × 1024) ja raahaa se kansioon `Assets/Art/UI/`. Vaihda **Texture Type** = **Sprite (2D and UI)** ja paina **Apply**.
+2. Kaksoisklikkaa `Menu_MainMenu`-prefabia ja valitse `Content/Background`.
+3. Valitse Image-komponentissa **Source Image** = `UI_MainMenuBackground` ja vaihda **Color** valkoiseksi.
+4. Jos otsikko ei erotu kuvasta, valitse `Content/MainPanel/Title` ja vaihda tekstin väri kohdasta **Vertex Color**.
+5. Tallenna ja testaa: Play. Päävalikko näkyy taustakuvan päällä.
+
 ## 3. Pause-valikko: Menu_PauseMenu
 
 Pause-valikko aukeaa P:llä, ja siinä ovat Resume, Settings ja Quit to main menu.
@@ -50,6 +68,15 @@ Pause-valikko aukeaa P:llä, ja siinä ovat Resume, Settings ja Quit to main men
 - Valikon sisältö on piilossa. Ruksaa **`Content`** näkyviin muokkauksen ajaksi. Skripti piilottaa sen pelissä joka tapauksessa.
 - **Taustan tummennus:** `Content/Dim`. Säädä Colorin alpha (nyt 65 %) tai lisää siihen kuva.
 - **Otsikko:** `Content/MainPanel/Title` ("Paused"). Napit ja välit toimivat samoin kuin päävalikossa.
+
+### Esimerkki: pause-valikko suomeksi ja kevyempi tummennus
+
+1. Kaksoisklikkaa `Menu_PauseMenu`-prefabia ja ruksaa `Content` näkyviin.
+2. Valitse `Content/MainPanel/Title` ja vaihda teksti: "Tauko".
+3. Vaihda nappien tekstit: `Content/MainPanel/Buttons/ResumeButton/Label` = "Jatka", `SettingsButton/Label` = "Asetukset" ja `QuitToMainMenuButton/Label` = "Päävalikkoon".
+4. Valitse `Content/Dim`, avaa **Color** ja laske **A** (läpinäkyvyys) esim. arvosta 165 arvoon 100.
+5. Poista `Content`-ruksi ja tallenna.
+6. Testaa: Play, paina päävalikon Play-nappia ja sitten **P**.
 
 ## 4. Death/end screen: Menu_DeathEndScreen
 
@@ -61,6 +88,15 @@ Sama ruutu toimii kuolemassa ("You died") ja pelin lopussa ("The End"), ja siin�
 - **Otsikon teksti:** juuriobjektin `DeathEndScreen`-komponentissa kentät **Death Title** ("You died") ja **End Title** ("The End"). Skripti vaihtaa otsikon näiden mukaan, joten älä kirjoita tekstiä suoraan Title-objektiin.
 - **Credits:** end-ruudun Continue näyttää `Content/Credits`-paneelin. Se on sama `Menu_Credits`-prefab kuin päävalikossa, joten tekstit päivittyvät kaikkialle.
 
+### Esimerkki: kuolemaruutu suomeksi
+
+1. Kaksoisklikkaa `Menu_DeathEndScreen`-prefabia ja valitse juuriobjekti.
+2. Vaihda `DeathEndScreen`-komponentissa **Death Title** = "Kuolit" ja **End Title** = "Loppu".
+3. Ruksaa `Content` näkyviin ja vaihda nappien tekstit: `Content/MainPanel/Buttons/ContinueButton/Label` = "Jatka" ja `QuitButton/Label` = "Lopeta".
+4. Halutessasi vaihda `Content/Background`in **Color**, esim. kirkkaammaksi punaiseksi.
+5. Poista `Content`-ruksi ja tallenna.
+6. Testaa: Play, päävalikon Play-nappi, paina **J** ja odota, että palkki on punaisen viivan (80 %) yli. Paina sitten **J** uudelleen ja **H**. Kuolemaruutu tulee 1,5 sekunnin päästä.
+
 ## 5. Settings: Menu_Settings
 
 Settings-paneelia käytetään sekä päävalikossa että pause-valikossa, joten muutokset näkyvät molemmissa automaattisesti.
@@ -70,6 +106,15 @@ Settings-paneelia käytetään sekä päävalikossa että pause-valikossa, joten
 - **Liukusäätimen ulkoasu:** `Slider`in osat `Background`, `Fill Area/Fill` ja `Handle Slide Area/Handle`. Jokaisessa on oma Image.
 - **Valintaruudun ulkoasu:** `Toggle/Background` ja `Background/Checkmark`.
 
+### Esimerkki: asetukset suomeksi
+
+1. Kaksoisklikkaa `Menu_Settings`-prefabia.
+2. Valitse `Panel/Title` ja vaihda teksti: "Asetukset".
+3. Vaihda rivien tekstit: `Panel/Row_MusicVolume/Label` = "Musiikki", `Row_MusicOn/Label` = "Musiikki päällä", `Row_SfxVolume/Label` = "Äänitehosteet" ja `Row_SfxOn/Label` = "Äänet päällä".
+4. Valitse `Panel/BackButton/Label` ja vaihda teksti: "Takaisin".
+5. Jos jokin teksti ei mahdu, suurenna sen `Label`in Layout Element > **Preferred Width** (nyt 300).
+6. Tallenna. Muutos näkyy sekä päävalikon että pause-valikon asetuksissa.
+
 ## 6. Credits: Menu_Credits
 
 Credits-teksti on objektissa `Panel/Body`, ja nyt siinä on placeholderit, jotka vaihdetaan oikeisiin (artistit, äänilähteet).
@@ -77,6 +122,13 @@ Credits-teksti on objektissa `Panel/Body`, ja nyt siinä on placeholderit, jotka
 - **Muotoilu:** tagit `<b>lihavoitu</b>`, `<size=36>iso</size>` ja `<color=#C03030>punainen</color>` toimivat tekstissä.
 - **Leveys:** Layout Element > Preferred Width (nyt 700).
 - Jos credits-teksti kasvaa pitkäksi, pyydä Claudea lisäämään vieritys.
+
+### Esimerkki: artistien nimet creditseihin
+
+1. Kaksoisklikkaa `Menu_Credits`-prefabia ja valitse `Panel/Body`.
+2. Etsi Inspectorin TextMeshPro-komponentin **Text Input** -kentästä kohta "(artists)" ja kirjoita nimet sen tilalle, jokainen omalle rivilleen (Enter).
+3. Kirjoita kohtaan "(sources)" äänien lähteet, esim. "Askeleet – freesound.org / käyttäjänimi (CC BY 4.0)".
+4. Tallenna. Credits näkyy päävalikossa ja pelin lopussa.
 
 ## 7. HUD: HUD_Player ja HUD_ItemSlot
 
@@ -113,6 +165,16 @@ Fontti tuodaan TextMeshPron font assetiksi, ja kuvat nimetään GDD:n mukaan.
     - Import-asetuksissa Texture Type on **Sprite (2D and UI)**.
     - Koot ovat GDD:n mukaan kahden potensseja.
 
+### Esimerkki: Google-fontti nappeihin ja otsikkoon
+
+1. Lataa fontti osoitteesta fonts.google.com (**Get font > Download**) ja pura zip.
+2. Raahaa .ttf-tiedosto kansioon `Assets/Art/UI/Fonts/`.
+3. Klikkaa .ttf:ää oikealla ja valitse **Create > TextMeshPro > Font Asset** (valitse **SDF**, jos kysytään).
+4. Valitse syntynyt font asset ja tarkista, että **Atlas Population Mode** on **Dynamic**, jotta ä ja ö toimivat.
+5. Kaksoisklikkaa `Menu_Button`-prefabia, valitse `Label` ja vaihda **Font Asset** uuteen fonttiin. Kaikki napit vaihtuvat.
+6. Kaksoisklikkaa `Menu_MainMenu`-prefabia, valitse `Content/MainPanel/Title` ja vaihda samoin **Font Asset**.
+7. Tallenna ja testaa: Play. Commitoi .ttf, font asset ja niiden .meta-tiedostot.
+
 ## 9. Säännöt, ettei mikään hajoa
 
 Ulkoasun muuttaminen, uudelleennimeäminen ja siirtäminen ovat turvallisia, mutta skriptien käyttämiä objekteja ei saa poistaa.
@@ -130,6 +192,17 @@ Ulkoasun muuttaminen, uudelleennimeäminen ja siirtäminen ovat turvallisia, mut
 - **Koristekuvat nappien päällä:** poista niistä **Raycast Target**, muuten napit eivät reagoi klikkaukseen.
 - **Testaa Game-ikkunassa** resoluutiolla **1920 × 1080**. Valikot skaalautuvat muihin resoluutioihin siitä.
 
+### Esimerkki: Credits-nappi lakkasi toimimasta
+
+Tilanne: poistit vahingossa päävalikon `CreditsButton`in ja teit tilalle uuden.
+
+1. Jos poisto oli juuri, kokeile ensin **Ctrl+Z**.
+2. Muuten avaa `Menu_MainMenu`-prefab ja valitse juuriobjekti. `MainMenu`-komponentin kentässä **Credits Button** lukee **None**.
+3. Raahaa uusi nappi Hierarchysta kenttään **Credits Button**.
+4. Tallenna ja testaa: Play ja Credits.
+
+Uuden napin saa helpoiten kopioimalla toisen napin (**Ctrl+D**) ja vaihtamalla sen `Label`in tekstin.
+
 ## 10. Toiminta-asetukset juuriobjektien Inspectorissa
 
 Toiminta säädetään valikoiden juuriobjektien Inspectorista. Oletuksena kaikki toimii testitilassa yhden scenen sisällä.
@@ -146,5 +219,14 @@ Toiminta säädetään valikoiden juuriobjektien Inspectorista. Oletuksena kaikk
     - **Death Delay:** viive kuolemasta ruutuun (nyt 1,5 s), jotta kuolemaefekti ehtii näkyä.
     - **Load Scene On Quit** ja **Main Menu Scene Name:** mihin Quit vie. Testitilassa Quit käynnistää scenen uudelleen päävalikko auki.
     - Death-tilan Continue käynnistää scenen toistaiseksi uudelleen. Kun Save Point System on tehty, se vie viimeisimpään tallennuspisteeseen.
+
+### Esimerkki: Play vie MAIN SCENEen
+
+1. Avaa Vili scene ja valitse Hierarchysta `Menu_MainMenu`.
+2. Ruksaa `MainMenu`-komponentissa **Load Scene On Play**. Kenttään **Play Scene Name** on jo valmiiksi kirjoitettu "MAIN SCENE".
+3. Testaa: Play ja päävalikon Play-nappi. MAIN SCENE latautuu.
+4. Muutos koskee vain tämän scenen kopiota (asetus näkyy lihavoituna). Jos haluat sen kaikkiin, valitse Inspectorin yläosasta **Overrides > Apply All**.
+
+Ennen oikeaa buildia MAIN SCENE pitää lisätä Build Profilesin scene-listaan. Se sovitaan Oton kanssa (Claude log).
 
 Muista lopuksi commitoida prefabit ja uudet kuvat ja fontit .meta-tiedostoineen.
