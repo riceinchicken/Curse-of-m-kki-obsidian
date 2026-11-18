@@ -103,6 +103,7 @@ Things one Claude needs from the other person's scripts.
 
 Newest first. One line per session: date, who, what was done.
 
+- 2026-11-18 — Vili's Claude — Copied Otto's test setup into `Assets/Scenes/Vili scene.unity` under `From Otto scene (copy)`: `Player` (with `PlayerMovement`, its camera and `SmokingEffect`), `floor`, `hidingspot`, `hidingspot (1)`. Copies, not prefabs: `Otto.unity` was opened read-only and closed without saving (file unchanged). In Vili scene only: Post Processing turned on for the copied camera (madness edges), old `Main Camera` disabled (kept). Not committed to the game repo yet.
 - 2026-11-18 — Otto's Claude — Merged Otto's branch into game repo `main` (e549f58, fast-forward): `PlayerMovement.cs` now checks `MenuUtility.AnyMenuOpen`; `Otto.unity` has `Menu_MainMenu`. All 18 scripts compile together; merged project not run in Unity. **Vili: pull.** Next for Otto: real crouch (shrinking the `CharacterController`).
 - 2026-11-18 — Otto's Claude — Otto switched `PlayerMovement.cs` to `MenuUtility.AnyMenuOpen` (Vili's request, done) and tested it with `Menu_MainMenu` in his scene. Pushed to branch `otto/audio-manager` (70005a5, plus Vili's newest `main` merged in: e549f58); all 18 scripts compile together. Not on `main` yet.
 - 2026-11-18 — Otto's Claude — Merged Otto's branch into game repo `main` (eb8c486, fast-forward): `PlayerMovement.cs` with the hiding spot counter and `Update` split into functions. Public API unchanged (`IsHidden`). All 18 scripts compile together; merged project not run in Unity. **Vili: pull.**
