@@ -64,7 +64,7 @@ Every game script, who made it, and what other scripts can rely on.
 
 | What                                                                                                                                                                                                                                                                                              | Who  | Started    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---- | ---------- |
-| `Assets/Scripts/Audio/AudioManager.cs` — Claude draft, not in the working tree any more. Was pushed to `main` by mistake in bc85e6b and reverted in d59c178; recover with `git show bc85e6b:Assets/Scripts/Audio/AudioManager.cs`. Compiles, never run in Unity, does not use `GameSettings` yet. | Otto | 2026-11-17 |
+| `Assets/Scripts/Audio/AudioManager.cs` — Otto's Claude is reworking the old draft (bc85e6b) to read `GameSettings` volumes and `GameSettings.OnChanged`. Working tree only on Otto's PC until Otto has heard it play in Unity. | Otto | 2026-11-19 |
 
 ## Shared conventions
 
