@@ -10,7 +10,8 @@ Viholliset kävelevät partioreittiä, joka on scenessä tavallinen objekti. Rei
 | Kultistin aivot (partiointi, näkeminen, jahtaaminen, lyönti) | `Assets/Scripts/Enemies/CultistAI.cs` |
 | Madness-aura | `Assets/Scripts/Enemies/EnemyMadnessAura.cs` |
 | Kultistin animaattori (Idle, Walk, Attack) | `Assets/Art/FBX/AC_Cultist.controller` |
-| Kultisti MAIN SCENEssä | Hierarchy: **`cultist`** |
+| Kultistin prefab (valmis kultisti) | `Assets/Art/Prefabs/Enemies/Enemy_Cultist.prefab` |
+| Kultisti MAIN SCENEssä | Hierarchy: **`cultist`** (prefabin kopio) |
 | Kultistin reitti MAIN SCENEssä | Hierarchy: **`Cultist_PatrolPath`** (lapset `Point 1` … `Point 7`) |
 
 Kultistin `CultistAI`-komponentin kentässä **Path** näkyy, mitä reittiä se kävelee.
@@ -45,7 +46,7 @@ Pisteiden nimillä ei ole väliä, vain järjestyksellä.
 3. Lisää pisteet: oikea klikkaus reittiobjektin päällä > **Create Empty**, jolloin piste syntyy lapseksi. Tee niitä niin monta kuin tarvitset ja siirrä ne paikoilleen.
 4. Valitse vihollinen ja vedä reittiobjekti Hierarchystä sen `CultistAI`-komponentin kenttään **Path**.
 
-Uusi kultisti tehdään helpoimmin kopioimalla nykyinen: valitse `cultist`, paina Ctrl+D ja vaihda kopion **Path**-kenttään oma reitti. Kopiossa ovat valmiina materiaalit, animaattori, aura ja kaikki asetukset.
+Uusi kultisti: raahaa **`Enemy_Cultist`**-prefab (`Assets/Art/Prefabs/Enemies/`) Project-ikkunasta sceneen ja vedä sen **Path**-kenttään oma reitti. Prefabissa ovat valmiina materiaalit, animaattori, aura ja kaikki asetukset. Prefabissa Path on tyhjä, koska reitit ovat scenen objekteja. Jos muutat asetusta kaikille kultisteille, muuta se prefabiin (kaksoisklikkaa prefabia), ei yksittäiseen kultistiin.
 
 Jos **Path** on tyhjä, vihollinen seisoo paikallaan, mutta näkee, jahtaa ja lyö silti. Sopii vartijaksi.
 
