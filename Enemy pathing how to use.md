@@ -134,6 +134,6 @@ Piiloutunutta pelaajaa ei nähdä. Etsimisen jälkeen vihollinen palaa reitin l�
 | Ei näe pelaajaa | Kasvata **View Distance** tai **View Angle**. Tarkista, ettei jokin ylimääräinen collider ole välissä (Sight Blockers) |
 | Näkee seinien läpi | Seinässä ei ole collideria. Lisää se, tai rajaa **Sight Blockers** oikeisiin layereihin |
 | Animaatio ei pyöri | Onko Animatorissa controller `AC_Cultist`? Onko klipin import-asetuksissa **Loop Time** päällä (kävely ja idle)? |
-| Katoaa lyötyään | GDD:n mukaista. Pois saa ottamalla **Disappear After Hit** pois päältä |
+| Katoaa lyötyään | GDD:n mukaista. Jos otat **Disappear After Hit** pois päältä, vihollinen jää lyönnin jälkeen seisomaan paikalleen |
 
 Muista tallentaa scene (**Ctrl+S**) ja commitoida muutokset GitHub Desktopissa.
