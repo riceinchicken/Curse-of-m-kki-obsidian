@@ -80,6 +80,7 @@ Every game script, who made it, and what other scripts can rely on.
 
 | What                                                                                                                                                                                                                                                                                              | Who  | Started    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---- | ---------- |
+| Save Point System (Vili): `SavePoint` prefab + respawn on death (`DeathEndScreen` Continue), enemies reset on respawn | Vili's Claude | 2026-11-25 |
 
 ## Shared conventions
 
