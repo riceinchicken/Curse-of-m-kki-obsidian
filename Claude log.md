@@ -83,6 +83,7 @@ Every game script, who made it, and what other scripts can rely on.
 
 | What                                                                                                                                                                                                                                                                                              | Who  | Started    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---- | ---------- |
+| NPC friend (Vili): `FriendNPC` + `FriendTalkZone`, placeholder `Friend` / `Friend_Dead` prefabs from the cultist model (green monster parts removed) | Vili's Claude | 2026-11-26 |
 
 ## Shared conventions
 
